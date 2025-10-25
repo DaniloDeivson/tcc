@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: nestfin-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: suasenha
+      MYSQL_DATABASE: nestfin
+      MYSQL_USER: nestfin_user
+      MYSQL_PASSWORD: nestfin_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - nestfin-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: nestfin-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=nestfin_db;user=nestfin_user;password=nestfin_pass
+    depends_on:
+      - mysql
+    networks:
+      - nestfin-network
+
+  frontend:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: nestfin-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://backend:5000
+    depends_on:
+      - backend
+    networks:
+      - nestfin-network
+
+volumes:
+  mysql_data:
+
+networks:
+  nestfin-network:
+    driver: bridge

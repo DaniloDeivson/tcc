@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Animações personalizadas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Reset e estilos base para NestFin */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #1A3A1A !important;
+  height: 100%;
+}
+
+body {
+  background-color: #1A3A1A !important;
+  color: white !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#__next {
+  background-color: #1A3A1A !important;
+  min-height: 100vh;
+  height: 100%;
+}
+
+/* Override para todas as classes de background */
+.bg-white,
+.bg-gray-50,
+.bg-gray-100,
+.bg-gray-200,
+.bg-background,
+.bg-slate-50,
+.bg-zinc-50,
+.bg-neutral-50,
+.bg-stone-50 {
+  background-color: #1A3A1A !important;
+}
+
+/* Garantir que inputs e formulários tenham o tema correto */
+input,
+textarea,
+select {
+  background-color: #1A3A1A !important;
+  color: white !important;
+  border-color: #6B8A6B !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9CA3AF !important;
+}
+
+/* Override para componentes do shadcn/ui */
+[data-theme] {
+  background-color: #1A3A1A !important;
+}
+
+/* Garantir que modais e overlays tenham o tema correto */
+.modal,
+.overlay,
+.dialog {
+  background-color: #1A3A1A !important;
+}
+
+/* Classes de animação personalizadas */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.animate-pulse-custom {
+  animation: pulse 2s infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Melhorias visuais */
+.glass-effect {
+  background: rgba(26, 58, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(107, 138, 107, 0.3);
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #1A3A1A, #2A4A2A);
+  border-radius: 12px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, #6B8A6B, #4A7C4A);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Hover effects melhorados */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(107, 138, 107, 0.5);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A3A1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6B8A6B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A7C4A;
+} 

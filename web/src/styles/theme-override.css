@@ -1,0 +1,28 @@
+/* CSS adicional para garantir tema verde */
+body, html, #__next {
+  background-color: #1A3A1A !important;
+  color: white !important;
+}
+
+/* Override para qualquer elemento que possa ter background branco */
+* {
+  background-color: inherit !important;
+}
+
+/* Forçar background verde em elementos específicos */
+div, section, main, article, aside, nav, header, footer {
+  background-color: #1A3A1A !important;
+}
+
+/* Exceções para elementos que devem ter cores específicas */
+.bg-[#2B402B],
+.bg-[#1a2d1a],
+.bg-[#122112],
+.bg-green-600,
+.bg-blue-600,
+.bg-red-600,
+.bg-yellow-600 {
+  background-color: inherit !important;
+}
+
+
